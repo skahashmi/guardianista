@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define GUARDIAN_API_KEY 5ya7ejbsp8ymbjc6bdymeg8q
+#define GUARDIAN_API_PREFIX @"http://api.guardianapis.com/content/"
 
 @interface GuardianAPI : NSObject {
 

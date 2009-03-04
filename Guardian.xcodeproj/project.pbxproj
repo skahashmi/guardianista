@@ -27,6 +27,9 @@
 		D9D7DB9A0F5E9BDE00E99160 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D7DB990F5E9BDE00E99160 /* libicucore.dylib */; };
 		D9D7DB9C0F5E9BF000E99160 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D7DB9B0F5E9BF000E99160 /* libxml2.dylib */; };
 		D9D7DB9F0F5E9C0600E99160 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D7DB9E0F5E9C0600E99160 /* libsqlite3.dylib */; };
+		D9D7DBB90F5E9D0E00E99160 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DBB40F5E9D0E00E99160 /* NSString+SBJSON.m */; };
+		D9D7DBBA0F5E9D0E00E99160 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DBB50F5E9D0E00E99160 /* NSObject+SBJSON.m */; };
+		D9D7DBBB0F5E9D0E00E99160 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DBB80F5E9D0E00E99160 /* SBJSON.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +70,13 @@
 		D9D7DB990F5E9BDE00E99160 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		D9D7DB9B0F5E9BF000E99160 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		D9D7DB9E0F5E9C0600E99160 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		D9D7DBB20F5E9D0E00E99160 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		D9D7DBB30F5E9D0E00E99160 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		D9D7DBB40F5E9D0E00E99160 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		D9D7DBB50F5E9D0E00E99160 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		D9D7DBB60F5E9D0E00E99160 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		D9D7DBB70F5E9D0E00E99160 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		D9D7DBB80F5E9D0E00E99160 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +162,13 @@
 		D9D7DB6E0F5E9B0200E99160 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
+				D9D7DBB20F5E9D0E00E99160 /* JSON.h */,
+				D9D7DBB30F5E9D0E00E99160 /* NSString+SBJSON.h */,
+				D9D7DBB40F5E9D0E00E99160 /* NSString+SBJSON.m */,
+				D9D7DBB50F5E9D0E00E99160 /* NSObject+SBJSON.m */,
+				D9D7DBB60F5E9D0E00E99160 /* SBJSON.h */,
+				D9D7DBB70F5E9D0E00E99160 /* NSObject+SBJSON.h */,
+				D9D7DBB80F5E9D0E00E99160 /* SBJSON.m */,
 				D9D7DB9E0F5E9C0600E99160 /* libsqlite3.dylib */,
 				D9D7DB9B0F5E9BF000E99160 /* libxml2.dylib */,
 				D9D7DB990F5E9BDE00E99160 /* libicucore.dylib */,
@@ -251,6 +268,9 @@
 				D9D7DB950F5E9B5600E99160 /* RegexKitLite.m in Sources */,
 				D9D7DB970F5E9B5600E99160 /* XPathQuery.m in Sources */,
 				D9D7DB980F5E9B5600E99160 /* NSString+URLEncoding.m in Sources */,
+				D9D7DBB90F5E9D0E00E99160 /* NSString+SBJSON.m in Sources */,
+				D9D7DBBA0F5E9D0E00E99160 /* NSObject+SBJSON.m in Sources */,
+				D9D7DBBB0F5E9D0E00E99160 /* SBJSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
