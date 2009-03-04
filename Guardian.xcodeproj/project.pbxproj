@@ -15,6 +15,18 @@
 		2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E55F0DE3E45000AC0155 /* RootViewController.xib */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
+		D9D7DB6D0F5E9AEE00E99160 /* GuardianAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DB6C0F5E9AEE00E99160 /* GuardianAPI.m */; };
+		D9D7DB8F0F5E9B5600E99160 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DB790F5E9B5600E99160 /* FMResultSet.m */; };
+		D9D7DB900F5E9B5600E99160 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DB7B0F5E9B5600E99160 /* FMDatabaseAdditions.m */; };
+		D9D7DB910F5E9B5600E99160 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DB7D0F5E9B5600E99160 /* FMDatabase.m */; };
+		D9D7DB920F5E9B5600E99160 /* GTMSystemVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DB800F5E9B5600E99160 /* GTMSystemVersion.m */; };
+		D9D7DB930F5E9B5600E99160 /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DB830F5E9B5600E99160 /* GTMHTTPFetcher.m */; };
+		D9D7DB950F5E9B5600E99160 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DB880F5E9B5600E99160 /* RegexKitLite.m */; };
+		D9D7DB970F5E9B5600E99160 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DB8A0F5E9B5600E99160 /* XPathQuery.m */; };
+		D9D7DB980F5E9B5600E99160 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DB8D0F5E9B5600E99160 /* NSString+URLEncoding.m */; };
+		D9D7DB9A0F5E9BDE00E99160 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D7DB990F5E9BDE00E99160 /* libicucore.dylib */; };
+		D9D7DB9C0F5E9BF000E99160 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D7DB9B0F5E9BF000E99160 /* libxml2.dylib */; };
+		D9D7DB9F0F5E9C0600E99160 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D7DB9E0F5E9C0600E99160 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +43,30 @@
 		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9D7DB6B0F5E9AEE00E99160 /* GuardianAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardianAPI.h; sourceTree = "<group>"; };
+		D9D7DB6C0F5E9AEE00E99160 /* GuardianAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuardianAPI.m; sourceTree = "<group>"; };
+		D9D7DB790F5E9B5600E99160 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		D9D7DB7A0F5E9B5600E99160 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		D9D7DB7B0F5E9B5600E99160 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		D9D7DB7C0F5E9B5600E99160 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		D9D7DB7D0F5E9B5600E99160 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		D9D7DB7E0F5E9B5600E99160 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		D9D7DB7F0F5E9B5600E99160 /* GTMGarbageCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMGarbageCollection.h; sourceTree = "<group>"; };
+		D9D7DB800F5E9B5600E99160 /* GTMSystemVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMSystemVersion.m; sourceTree = "<group>"; };
+		D9D7DB810F5E9B5600E99160 /* GTMDebugSelectorValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDebugSelectorValidation.h; sourceTree = "<group>"; };
+		D9D7DB820F5E9B5600E99160 /* GTMSystemVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMSystemVersion.h; sourceTree = "<group>"; };
+		D9D7DB830F5E9B5600E99160 /* GTMHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMHTTPFetcher.m; sourceTree = "<group>"; };
+		D9D7DB840F5E9B5600E99160 /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMHTTPFetcher.h; sourceTree = "<group>"; };
+		D9D7DB850F5E9B5600E99160 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		D9D7DB870F5E9B5600E99160 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		D9D7DB880F5E9B5600E99160 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		D9D7DB8A0F5E9B5600E99160 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
+		D9D7DB8B0F5E9B5600E99160 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		D9D7DB8C0F5E9B5600E99160 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		D9D7DB8D0F5E9B5600E99160 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		D9D7DB990F5E9BDE00E99160 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		D9D7DB9B0F5E9BF000E99160 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		D9D7DB9E0F5E9C0600E99160 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +77,9 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
+				D9D7DB9A0F5E9BDE00E99160 /* libicucore.dylib in Frameworks */,
+				D9D7DB9C0F5E9BF000E99160 /* libxml2.dylib in Frameworks */,
+				D9D7DB9F0F5E9C0600E99160 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +93,8 @@
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				1D3623240D0F684500981E51 /* GuardianAppDelegate.h */,
 				1D3623250D0F684500981E51 /* GuardianAppDelegate.m */,
+				D9D7DB6B0F5E9AEE00E99160 /* GuardianAPI.h */,
+				D9D7DB6C0F5E9AEE00E99160 /* GuardianAPI.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -69,6 +110,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				D9D7DB6E0F5E9B0200E99160 /* 3rd Party */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -105,6 +147,35 @@
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D9D7DB6E0F5E9B0200E99160 /* 3rd Party */ = {
+			isa = PBXGroup;
+			children = (
+				D9D7DB9E0F5E9C0600E99160 /* libsqlite3.dylib */,
+				D9D7DB9B0F5E9BF000E99160 /* libxml2.dylib */,
+				D9D7DB990F5E9BDE00E99160 /* libicucore.dylib */,
+				D9D7DB790F5E9B5600E99160 /* FMResultSet.m */,
+				D9D7DB7A0F5E9B5600E99160 /* FMResultSet.h */,
+				D9D7DB7B0F5E9B5600E99160 /* FMDatabaseAdditions.m */,
+				D9D7DB7C0F5E9B5600E99160 /* FMDatabaseAdditions.h */,
+				D9D7DB7D0F5E9B5600E99160 /* FMDatabase.m */,
+				D9D7DB7E0F5E9B5600E99160 /* FMDatabase.h */,
+				D9D7DB7F0F5E9B5600E99160 /* GTMGarbageCollection.h */,
+				D9D7DB800F5E9B5600E99160 /* GTMSystemVersion.m */,
+				D9D7DB810F5E9B5600E99160 /* GTMDebugSelectorValidation.h */,
+				D9D7DB820F5E9B5600E99160 /* GTMSystemVersion.h */,
+				D9D7DB830F5E9B5600E99160 /* GTMHTTPFetcher.m */,
+				D9D7DB840F5E9B5600E99160 /* GTMHTTPFetcher.h */,
+				D9D7DB850F5E9B5600E99160 /* GTMDefines.h */,
+				D9D7DB870F5E9B5600E99160 /* RegexKitLite.h */,
+				D9D7DB880F5E9B5600E99160 /* RegexKitLite.m */,
+				D9D7DB8A0F5E9B5600E99160 /* XPathQuery.m */,
+				D9D7DB8B0F5E9B5600E99160 /* XPathQuery.h */,
+				D9D7DB8C0F5E9B5600E99160 /* NSString+URLEncoding.h */,
+				D9D7DB8D0F5E9B5600E99160 /* NSString+URLEncoding.m */,
+			);
+			path = "3rd Party";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +242,15 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* GuardianAppDelegate.m in Sources */,
 				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
+				D9D7DB6D0F5E9AEE00E99160 /* GuardianAPI.m in Sources */,
+				D9D7DB8F0F5E9B5600E99160 /* FMResultSet.m in Sources */,
+				D9D7DB900F5E9B5600E99160 /* FMDatabaseAdditions.m in Sources */,
+				D9D7DB910F5E9B5600E99160 /* FMDatabase.m in Sources */,
+				D9D7DB920F5E9B5600E99160 /* GTMSystemVersion.m in Sources */,
+				D9D7DB930F5E9B5600E99160 /* GTMHTTPFetcher.m in Sources */,
+				D9D7DB950F5E9B5600E99160 /* RegexKitLite.m in Sources */,
+				D9D7DB970F5E9B5600E99160 /* XPathQuery.m in Sources */,
+				D9D7DB980F5E9B5600E99160 /* NSString+URLEncoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +267,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Guardian_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/3rd Party\"",
+				);
 				PRODUCT_NAME = Guardian;
 			};
 			name = Debug;
@@ -199,6 +283,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Guardian_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/3rd Party\"",
+				);
 				PRODUCT_NAME = Guardian;
 			};
 			name = Release;
@@ -211,6 +299,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.2.1.sdk/usr/include/libxml2;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				SDKROOT = iphoneos2.2.1;
