@@ -30,6 +30,7 @@
 		D9D7DBB90F5E9D0E00E99160 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DBB40F5E9D0E00E99160 /* NSString+SBJSON.m */; };
 		D9D7DBBA0F5E9D0E00E99160 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DBB50F5E9D0E00E99160 /* NSObject+SBJSON.m */; };
 		D9D7DBBB0F5E9D0E00E99160 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DBB80F5E9D0E00E99160 /* SBJSON.m */; };
+		D9D7DCA70F5ED1DE00E99160 /* GuardianContent.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DCA60F5ED1DE00E99160 /* GuardianContent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,8 @@
 		D9D7DBB60F5E9D0E00E99160 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
 		D9D7DBB70F5E9D0E00E99160 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		D9D7DBB80F5E9D0E00E99160 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		D9D7DCA50F5ED1DE00E99160 /* GuardianContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardianContent.h; sourceTree = "<group>"; };
+		D9D7DCA60F5ED1DE00E99160 /* GuardianContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuardianContent.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				1D3623250D0F684500981E51 /* GuardianAppDelegate.m */,
 				D9D7DB6B0F5E9AEE00E99160 /* GuardianAPI.h */,
 				D9D7DB6C0F5E9AEE00E99160 /* GuardianAPI.m */,
+				D9D7DCA50F5ED1DE00E99160 /* GuardianContent.h */,
+				D9D7DCA60F5ED1DE00E99160 /* GuardianContent.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 				D9D7DBB90F5E9D0E00E99160 /* NSString+SBJSON.m in Sources */,
 				D9D7DBBA0F5E9D0E00E99160 /* NSObject+SBJSON.m in Sources */,
 				D9D7DBBB0F5E9D0E00E99160 /* SBJSON.m in Sources */,
+				D9D7DCA70F5ED1DE00E99160 /* GuardianContent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

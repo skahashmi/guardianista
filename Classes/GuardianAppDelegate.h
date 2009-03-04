@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GuardianAPI.h"
 
 @interface GuardianAppDelegate : NSObject <UIApplicationDelegate> {
-    
+	GuardianAPI *guardian;
     UIWindow *window;
     UINavigationController *navigationController;
 }

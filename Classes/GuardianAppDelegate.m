@@ -21,8 +21,14 @@
 	// Configure and show the window
 	[window addSubview:[navigationController view]];
 	[window makeKeyAndVisible];
+	guardian = [[GuardianAPI alloc] init];
+
+	[guardian latestContentWithDelegate:self didSucceedSelector:@selector(content:)];
 }
 
+- (void)content:(NSArray *)content {
+	NSLog(@"content delegate called OK:\n %@", content);
+}
 
 - (void)applicationWillTerminate:(UIApplication *)application {
 	// Save data if appropriate
