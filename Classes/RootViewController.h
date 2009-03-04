@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface RootViewController : UITableViewController {
+	IBOutlet UITableView *tableView;
 }
+
+@property (nonatomic, retain) UITableView *tableView;
 
 @end

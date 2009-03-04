@@ -14,6 +14,7 @@
 
 @implementation RootViewController
 
+@synthesize tableView;
 /*
 - (void)viewDidLoad {
     [super viewDidLoad];

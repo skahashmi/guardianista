@@ -25,11 +25,13 @@
 	guardian = [[GuardianAPI alloc] init];
 
 	[guardian latestContentWithDelegate:self didSucceedSelector:@selector(content:)];
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 
 - (void)content:(NSArray *)content {
-	// NSLog(@"content delegate called OK:\n %@", content);
 	self.contents = content;
+	[[((RootViewController *)[navigationController topViewController]) tableView] reloadData];
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
