@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 #import "GuardianAppDelegate.h"
 #import "GuardianContent.h"
+#import "ContentViewController.h"
 
 
 @implementation RootViewController
@@ -91,8 +92,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	GuardianAppDelegate *delegate = (GuardianAppDelegate *)[[UIApplication sharedApplication] delegate];
 	GuardianContent *content = [delegate.contents objectAtIndex:indexPath.row];
-	NSLog(@"%@", content.url);
-	[[UIApplication sharedApplication] openURL:[ [ NSURL alloc ] initWithString:content.url]];
+	ContentViewController *contentViewController;
+	contentViewController = [[ContentViewController alloc] 
+								  initWithNibName:@"ContentViewController" 
+								  bundle:nil]; 
+	contentViewController.url = content.url;
+	[self.navigationController pushViewController:contentViewController animated:YES]; 
+	[contentViewController release]; 
 }
 
 

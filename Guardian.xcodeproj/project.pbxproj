@@ -31,6 +31,8 @@
 		D9D7DBBA0F5E9D0E00E99160 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DBB50F5E9D0E00E99160 /* NSObject+SBJSON.m */; };
 		D9D7DBBB0F5E9D0E00E99160 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DBB80F5E9D0E00E99160 /* SBJSON.m */; };
 		D9D7DCA70F5ED1DE00E99160 /* GuardianContent.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DCA60F5ED1DE00E99160 /* GuardianContent.m */; };
+		D9D7DE030F5EEC4800E99160 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DE020F5EEC4800E99160 /* ContentViewController.m */; };
+		D9D7DE070F5EEC7B00E99160 /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D7DE060F5EEC7B00E99160 /* ContentViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +82,9 @@
 		D9D7DBB80F5E9D0E00E99160 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
 		D9D7DCA50F5ED1DE00E99160 /* GuardianContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardianContent.h; sourceTree = "<group>"; };
 		D9D7DCA60F5ED1DE00E99160 /* GuardianContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuardianContent.m; sourceTree = "<group>"; };
+		D9D7DE010F5EEC4800E99160 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
+		D9D7DE020F5EEC4800E99160 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		D9D7DE060F5EEC7B00E99160 /* ContentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +107,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D9D7DE010F5EEC4800E99160 /* ContentViewController.h */,
+				D9D7DE020F5EEC4800E99160 /* ContentViewController.m */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				1D3623240D0F684500981E51 /* GuardianAppDelegate.h */,
@@ -131,6 +138,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				D9D7DE060F5EEC7B00E99160 /* ContentViewController.xib */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -251,6 +259,7 @@
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */,
+				D9D7DE070F5EEC7B00E99160 /* ContentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +286,7 @@
 				D9D7DBBA0F5E9D0E00E99160 /* NSObject+SBJSON.m in Sources */,
 				D9D7DBBB0F5E9D0E00E99160 /* SBJSON.m in Sources */,
 				D9D7DCA70F5ED1DE00E99160 /* GuardianContent.m in Sources */,
+				D9D7DE030F5EEC4800E99160 /* ContentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

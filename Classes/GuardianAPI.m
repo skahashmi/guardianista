@@ -35,7 +35,6 @@
 	[myFetcher beginFetchWithDelegate:self
 					didFinishSelector:@selector(myFetcher:finishedWithData:)
                       didFailSelector:@selector(myFetcher:failedWithError:)];
-	
 }
 
 - (void) latestContentWithDelegate:(id)successDelegate didSucceedSelector:(SEL)sel {
@@ -64,7 +63,7 @@
 
 		NSDictionary *info;
 		for(info in contentFields) {
-			GuardianContent *c = [[GuardianContent alloc] init];
+			GuardianContent *c = [[[GuardianContent alloc] init] autorelease];
 			c.headline = @"Foo!";
 			NSDictionary *keyvalue;
 			for(keyvalue in [info objectForKey:@"nodeAttributeArray"]) {
@@ -119,6 +118,7 @@
 			}
 			[content addObject:c];
 		}
+		[sISO8601 release];
 		[delegate performSelector:sel withObject:content];
 	}
 }

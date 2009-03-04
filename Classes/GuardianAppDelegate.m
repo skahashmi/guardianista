@@ -28,7 +28,7 @@
 }
 
 - (void)content:(NSArray *)content {
-	NSLog(@"content delegate called OK:\n %@", content);
+	// NSLog(@"content delegate called OK:\n %@", content);
 	self.contents = content;
 }
 
@@ -38,6 +38,7 @@
 
 
 - (void)dealloc {
+	[self.contents release];
 	[navigationController release];
 	[window release];
 	[super dealloc];
