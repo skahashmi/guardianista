@@ -64,7 +64,6 @@
 
 		NSDictionary *info;
 		for(info in contentFields) {
-//			NSLog(@"%@", info);
 			GuardianContent *c = [[GuardianContent alloc] init];
 			c.headline = @"Foo!";
 			NSDictionary *keyvalue;
@@ -125,7 +124,7 @@
 }
 
 - (void)myFetcher:(GTMHTTPFetcher *)fetcher failedWIthError:(NSError *)error {
-	NSLog(@"%@", error);
+	NSLog(@"ERROR: %@", error);
 }
 
 @end

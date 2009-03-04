@@ -8,6 +8,7 @@
 
 #import "RootViewController.h"
 #import "GuardianAppDelegate.h"
+#import "GuardianContent.h"
 
 
 @implementation RootViewController
@@ -64,13 +65,15 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+	GuardianAppDelegate *delegate = (GuardianAppDelegate *)[[UIApplication sharedApplication] delegate];
+	return [delegate.contents count];
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+	GuardianAppDelegate *delegate = (GuardianAppDelegate *)[[UIApplication sharedApplication] delegate];
+
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -78,17 +81,18 @@
         cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    // Set up the cell...
+	GuardianContent *content = [delegate.contents objectAtIndex:indexPath.row];
+	cell.text = content.headline;
 
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
+	GuardianAppDelegate *delegate = (GuardianAppDelegate *)[[UIApplication sharedApplication] delegate];
+	GuardianContent *content = [delegate.contents objectAtIndex:indexPath.row];
+	NSLog(@"%@", content.url);
+	[[UIApplication sharedApplication] openURL:[ [ NSURL alloc ] initWithString:content.url]];
 }
 
 

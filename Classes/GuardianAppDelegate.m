@@ -14,6 +14,7 @@
 
 @synthesize window;
 @synthesize navigationController;
+@synthesize contents;
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -28,6 +29,7 @@
 
 - (void)content:(NSArray *)content {
 	NSLog(@"content delegate called OK:\n %@", content);
+	self.contents = content;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
