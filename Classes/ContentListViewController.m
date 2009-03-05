@@ -164,6 +164,7 @@
 
 
 - (void)dealloc {
+	[filter release];
 	[tableView release];
 	[contents release];
     [super dealloc];

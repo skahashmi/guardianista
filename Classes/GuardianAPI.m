@@ -47,7 +47,8 @@
 	NSArray *contentFields = PerformXMLXPathQuery(data, @"/tags/tag");
 	
 	NSMutableDictionary *tags = [NSMutableDictionary dictionary];
-	NSString *name, *filter;
+	NSString *name = nil;
+	NSString *filter = nil;
 
 	for(NSDictionary *tag in contentFields) {
 		for(NSDictionary *attr in [tag objectForKey:@"nodeAttributeArray"]) {
@@ -59,7 +60,9 @@
 				filter = [attr objectForKey:@"nodeContent"];
 			}
 		}
-		[tags setObject:filter forKey:name];
+		if(filter != nil && name != nil) {
+			[tags setObject:filter forKey:name];
+		}
 	}
 	return tags;
 }
@@ -110,8 +113,8 @@
 				NSDictionary *t;
 				for(t in taggedWith) {
 					NSDictionary *t2;
-					NSString *name;
-					NSString *filter;
+					NSString *name=nil;
+					NSString *filter=nil;
 					
 					for(t2 in [t objectForKey:@"nodeAttributeArray"]) {
 						
@@ -123,7 +126,9 @@
 							filter = [t2 objectForKey:@"nodeContent"];
 						}
 					}
-					[tags setObject:filter forKey:name];						
+					if(filter != nil && name != nil) {
+						[tags setObject:filter forKey:name];						
+					}
 				}
 				c.tags = tags;
 			}

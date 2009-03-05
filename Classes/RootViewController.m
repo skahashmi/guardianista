@@ -94,7 +94,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	UIViewController *controller;
+	UIViewController *controller = nil;
 	NSLog(@"Selected: %d", indexPath.row);
 	switch(indexPath.row) {
 		case 0:
@@ -109,8 +109,10 @@
 			break;
 	}
 
-	[self.navigationController pushViewController:controller animated:YES]; 
-	[controller release]; 
+	if(controller != nil) {
+		[self.navigationController pushViewController:controller animated:YES]; 
+		[controller release]; 
+	}
 }
 
 
