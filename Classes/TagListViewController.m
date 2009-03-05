@@ -1,21 +1,34 @@
 //
-//  RootViewController.m
+//  TagListViewController.m
 //  Guardian
 //
-//  Created by Matt Biddulph on 04/03/2009.
-//  Copyright Hackdiary Ltd 2009. All rights reserved.
+//  Created by Matt Biddulph on 05/03/2009.
+//  Copyright 2009 Hackdiary Ltd. All rights reserved.
 //
 
-#import "RootViewController.h"
 #import "GuardianAppDelegate.h"
-#import "GuardianContent.h"
-#import "ContentViewController.h"
-#import "ContentListViewController.h"
 #import "TagListViewController.h"
 
-@implementation RootViewController
 
+@implementation TagListViewController
 @synthesize tableView;
+@synthesize tags;
+
+- (void)setTagData:(NSDictionary *)t {
+	NSLog(@"Tags:\n%@", t);
+	self.tags = t;
+	[[self tableView] reloadData];
+}
+
+/*
+- (id)initWithStyle:(UITableViewStyle)style {
+    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
+    if (self = [super initWithStyle:style]) {
+    }
+    return self;
+}
+*/
+
 /*
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,11 +38,15 @@
 }
 */
 
-/*
 - (void)viewWillAppear:(BOOL)animated {
+	NSLog(@"I'm a taglistviewcontroller.");
     [super viewWillAppear:animated];
+	self.tags = [NSDictionary dictionary];
+	
+	GuardianAppDelegate *delegate = (GuardianAppDelegate *)[[UIApplication sharedApplication] delegate];
+	[delegate.guardian allSubjectsWithDelegate:self didSucceedSelector:@selector(setTagData:)];
 }
-*/
+
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -68,12 +85,14 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 2;
+    return [self.tags count];
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+	NSArray *labels = [[self.tags allKeys] sortedArrayUsingSelector:@selector(compare:)];
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -81,36 +100,17 @@
         cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
     }
     
-	switch(indexPath.row) {
-		case 0:
-			cell.text = @"Latest content";
-			break;
-		case 1:
-			cell.text = @"Browse by tag";
-			break;
-	}
+	cell.text = [labels objectAtIndex:indexPath.row];
 
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	UIViewController *controller;
-	NSLog(@"Selected: %d", indexPath.row);
-	switch(indexPath.row) {
-		case 0:
-			controller = [[ContentListViewController alloc]
-									 initWithNibName:@"ContentListViewController" 
-									 bundle:nil]; 
-			break;
-		case 1:
-			controller = [[TagListViewController alloc]
-						  initWithNibName:@"TagListViewController" 
-						  bundle:nil]; 			
-			break;
-	}
 
-	[self.navigationController pushViewController:controller animated:YES]; 
-	[controller release]; 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Navigation logic may go here. Create and push another view controller.
+	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
+	// [self.navigationController pushViewController:anotherViewController];
+	// [anotherViewController release];
 }
 
 

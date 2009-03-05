@@ -13,12 +13,10 @@
 	GuardianAPI *guardian;
     UIWindow *window;
     UINavigationController *navigationController;
-	NSDictionary *tags;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
-@property (nonatomic, retain) NSDictionary *tags;
 @property (nonatomic, retain) GuardianAPI *guardian;
 
 @end

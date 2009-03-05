@@ -14,7 +14,6 @@
 
 @synthesize window;
 @synthesize navigationController;
-@synthesize tags;
 @synthesize guardian;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -23,15 +22,6 @@
 	[window addSubview:[navigationController view]];
 	[window makeKeyAndVisible];
 	self.guardian = [[GuardianAPI alloc] init];
-	self.tags = [NSArray array];
-
-	[guardian allSubjectsWithDelegate:self didSucceedSelector:@selector(tags:)];
-	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-}
-
-- (void)tags:(NSDictionary *)t {
-	self.tags = t;
-	NSLog(@"Tags:\n%@", t);
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

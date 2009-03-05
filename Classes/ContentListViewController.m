@@ -41,10 +41,10 @@
 */
 
 - (void)viewWillAppear:(BOOL)animated {
-	GuardianAppDelegate *delegate = (GuardianAppDelegate *)[[UIApplication sharedApplication] delegate];
-
     [super viewWillAppear:animated];
 	self.contents = [NSArray array];
+	
+	GuardianAppDelegate *delegate = (GuardianAppDelegate *)[[UIApplication sharedApplication] delegate];
 	[delegate.guardian latestContentWithDelegate:self didSucceedSelector:@selector(setContentList:)];
 }
 
