@@ -8,15 +8,29 @@
 
 #import "GuardianAppDelegate.h"
 #import "TagListViewController.h"
+#import "RegexKitLite.h"
 
 
 @implementation TagListViewController
 @synthesize tableView;
 @synthesize tags;
+@synthesize tags_grouped;
 
 - (void)setTagData:(NSDictionary *)t {
-	NSLog(@"Tags:\n%@", t);
 	self.tags = t;
+	NSMutableDictionary *g = [NSMutableDictionary dictionary];
+	for(NSString *name in t) {
+		NSString *filter = [[t objectForKey:name] lowercaseString];
+		NSArray *levels = [filter componentsSeparatedByRegex:@"/"];
+		// NSLog(@"%@ -> %@", filter, levels);
+		NSString *group = [levels objectAtIndex:1];
+		if(![g objectForKey:group]) {
+			[g setObject:[NSMutableDictionary dictionary] forKey:group];
+		}
+		[[g objectForKey:group] setObject:filter forKey:name];
+	}
+	self.tags_grouped = g;
+	// NSLog(@"%@", g);
 	[[self tableView] reloadData];
 }
 
@@ -79,20 +93,31 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+	if([self.tags_grouped count] == 0) {
+		return 1;
+	}
+    return [self.tags_grouped count];
 }
 
+- (NSString *)tableView:(UITableView *)tableView 
+titleForHeaderInSection:(NSInteger)section { 
+	NSArray *sections = [[self.tags_grouped allKeys] sortedArrayUsingSelector:@selector(compare:)];
+	return [sections objectAtIndex:section];
+}
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.tags count];
+	NSArray *sections = [[self.tags_grouped allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    return [[self.tags_grouped objectForKey:[sections objectAtIndex:section]] count];
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-	NSArray *labels = [[self.tags allKeys] sortedArrayUsingSelector:@selector(compare:)];
+	NSArray *sections = [[self.tags_grouped allKeys] sortedArrayUsingSelector:@selector(compare:)];
+	NSDictionary *section = [self.tags_grouped objectForKey:[sections objectAtIndex:indexPath.section]];
+	NSArray *labels = [[section allKeys] sortedArrayUsingSelector:@selector(compare:)];
+	
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tView dequeueReusableCellWithIdentifier:CellIdentifier];

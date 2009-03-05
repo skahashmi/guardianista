@@ -11,10 +11,12 @@
 
 @interface TagListViewController : UITableViewController {
 	NSDictionary *tags;
+	NSDictionary *tags_grouped;
 	IBOutlet UITableView *tableView;
 }
 
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) NSDictionary *tags;
+@property (nonatomic, retain) NSDictionary *tags_grouped;
 
 @end
