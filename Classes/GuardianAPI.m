@@ -24,19 +24,6 @@
 	return url;
 }
 
-- (void) callMethod:(NSString *)method withParams:(NSDictionary *)params withDelegate:(id)successDelegate didSucceedSelector:(SEL)sel {
-	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[self urlForMethod:method withParams:params]]];
-    GTMHTTPFetcher* myFetcher = [GTMHTTPFetcher httpFetcherWithRequest:request];
-	
-	NSValue* selector = [NSValue valueWithPointer:sel];
-	NSDictionary *properties = [NSDictionary dictionaryWithObjectsAndKeys:successDelegate,@"delegate",selector,@"selector",method,@"method",nil];
-	[myFetcher setProperties:properties];
-	
-	[myFetcher beginFetchWithDelegate:self
-					didFinishSelector:@selector(myFetcher:finishedWithData:)
-                      didFailSelector:@selector(myFetcher:failedWithError:)];
-}
-
 - (void) latestContentWithDelegate:(id)successDelegate didSucceedSelector:(SEL)sel {
 	[self callMethod:@"search" withParams:[NSDictionary dictionaryWithObject:@"desc" forKey:@"order-by-date"] withDelegate:successDelegate didSucceedSelector:sel];
 }
@@ -123,8 +110,51 @@
 	}
 }
 
-- (void)myFetcher:(GTMHTTPFetcher *)fetcher failedWIthError:(NSError *)error {
+- (void)myFetcher:(GTMHTTPFetcher *)fetcher failedWithError:(NSError *)error {
 	NSLog(@"ERROR: %@", error);
+}
+
+- (void) callMethod:(NSString *)method withParams:(NSDictionary *)params withDelegate:(id)successDelegate didSucceedSelector:(SEL)sel {
+	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[self urlForMethod:method withParams:params]]];
+    GTMHTTPFetcher* myFetcher = [GTMHTTPFetcher httpFetcherWithRequest:request];
+	
+	NSValue* selector = [NSValue valueWithPointer:sel];
+	NSDictionary *properties = [NSDictionary dictionaryWithObjectsAndKeys:successDelegate,@"delegate",selector,@"selector",method,@"method",nil];
+	[myFetcher setProperties:properties];
+	
+#ifdef GUARDIAN_OFFLINE_MOCK
+	NSString *filename = nil;
+	if([method isEqualToString:@"search"]) {
+		filename = @"search_order-by-date";
+		if([params objectForKey:@"q"]) {
+			if([params objectForKey:@"filter"]) {
+				filename = @"search-q_twitter_biz-filter-jemima.xml";
+			} else {
+				filename = @"search-q_dopplr.xml";
+			}
+		} else {
+			if([params objectForKey:@"filter"]) {
+				filename = @"search_filter-_global_jemimakiss";
+			}
+		}
+	}
+	if([method isEqualToString:@"all-subjects"]) {
+		filename = @"all-subjects";
+	}
+	if(filename) {
+		NSString *datapath = [[NSBundle mainBundle] 
+							  pathForResource:filename 
+							  ofType:@"xml"];
+		NSData *data = [NSData dataWithContentsOfFile:datapath];
+		[self myFetcher:myFetcher finishedWithData:data];
+	} else {
+		[self myFetcher:myFetcher failedWithError:[NSError errorWithDomain:@"guardianiata.com" code:1 userInfo:nil]];
+	}
+#else	
+	[myFetcher beginFetchWithDelegate:self
+					didFinishSelector:@selector(myFetcher:finishedWithData:)
+                      didFailSelector:@selector(myFetcher:failedWithError:)];
+#endif
 }
 
 @end

@@ -33,6 +33,11 @@
 		D9D7DCA70F5ED1DE00E99160 /* GuardianContent.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DCA60F5ED1DE00E99160 /* GuardianContent.m */; };
 		D9D7DE030F5EEC4800E99160 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DE020F5EEC4800E99160 /* ContentViewController.m */; };
 		D9D7DE070F5EEC7B00E99160 /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D7DE060F5EEC7B00E99160 /* ContentViewController.xib */; };
+		D9D7DF060F5FE01300E99160 /* search_order-by-date.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9D7DF010F5FE01300E99160 /* search_order-by-date.xml */; };
+		D9D7DF070F5FE01300E99160 /* search_filter-_global_jemimakiss.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9D7DF020F5FE01300E99160 /* search_filter-_global_jemimakiss.xml */; };
+		D9D7DF080F5FE01300E99160 /* search-q_twitter_biz-filter-jemima.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9D7DF030F5FE01300E99160 /* search-q_twitter_biz-filter-jemima.xml */; };
+		D9D7DF090F5FE01300E99160 /* search-q_dopplr.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9D7DF040F5FE01300E99160 /* search-q_dopplr.xml */; };
+		D9D7DF0A0F5FE01300E99160 /* all-subjects.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9D7DF050F5FE01300E99160 /* all-subjects.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +90,11 @@
 		D9D7DE010F5EEC4800E99160 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		D9D7DE020F5EEC4800E99160 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
 		D9D7DE060F5EEC7B00E99160 /* ContentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
+		D9D7DF010F5FE01300E99160 /* search_order-by-date.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "search_order-by-date.xml"; sourceTree = "<group>"; };
+		D9D7DF020F5FE01300E99160 /* search_filter-_global_jemimakiss.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "search_filter-_global_jemimakiss.xml"; sourceTree = "<group>"; };
+		D9D7DF030F5FE01300E99160 /* search-q_twitter_biz-filter-jemima.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "search-q_twitter_biz-filter-jemima.xml"; sourceTree = "<group>"; };
+		D9D7DF040F5FE01300E99160 /* search-q_dopplr.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "search-q_dopplr.xml"; sourceTree = "<group>"; };
+		D9D7DF050F5FE01300E99160 /* all-subjects.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "all-subjects.xml"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +165,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D9D7DEFA0F5FDFF100E99160 /* Sample Data */,
 				2899E55F0DE3E45000AC0155 /* RootViewController.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -206,6 +217,18 @@
 				D9D7DB8D0F5E9B5600E99160 /* NSString+URLEncoding.m */,
 			);
 			path = "3rd Party";
+			sourceTree = "<group>";
+		};
+		D9D7DEFA0F5FDFF100E99160 /* Sample Data */ = {
+			isa = PBXGroup;
+			children = (
+				D9D7DF010F5FE01300E99160 /* search_order-by-date.xml */,
+				D9D7DF020F5FE01300E99160 /* search_filter-_global_jemimakiss.xml */,
+				D9D7DF030F5FE01300E99160 /* search-q_twitter_biz-filter-jemima.xml */,
+				D9D7DF040F5FE01300E99160 /* search-q_dopplr.xml */,
+				D9D7DF050F5FE01300E99160 /* all-subjects.xml */,
+			);
+			path = "Sample Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +283,11 @@
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */,
 				D9D7DE070F5EEC7B00E99160 /* ContentViewController.xib in Resources */,
+				D9D7DF060F5FE01300E99160 /* search_order-by-date.xml in Resources */,
+				D9D7DF070F5FE01300E99160 /* search_filter-_global_jemimakiss.xml in Resources */,
+				D9D7DF080F5FE01300E99160 /* search-q_twitter_biz-filter-jemima.xml in Resources */,
+				D9D7DF090F5FE01300E99160 /* search-q_dopplr.xml in Resources */,
+				D9D7DF0A0F5FE01300E99160 /* all-subjects.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
