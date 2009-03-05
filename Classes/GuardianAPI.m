@@ -28,7 +28,12 @@
 	[self callMethod:@"search" withParams:[NSDictionary dictionaryWithObject:@"desc" forKey:@"order-by-date"] withDelegate:successDelegate didSucceedSelector:sel];
 }
 
+- (void) searchWithFilter:(NSString *)filter withDelegate:(id)successDelegate didSucceedSelector:(SEL)sel {
+	[self callMethod:@"search" withParams:[NSDictionary dictionaryWithObject:filter forKey:@"filter"] withDelegate:successDelegate didSucceedSelector:sel];
+}
+
 - (void) searchQuery:(NSString *)q withDelegate:(id)successDelegate didSucceedSelector:(SEL)sel {
+	[self callMethod:@"search" withParams:[NSDictionary dictionaryWithObject:q forKey:@"q"] withDelegate:successDelegate didSucceedSelector:sel];
 }
 
 - (void) searchQuery:(NSString *)q withFilter:(NSString *)filter withDelegate:(id)successDelegate didSucceedSelector:(SEL)sel {

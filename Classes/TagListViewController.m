@@ -8,6 +8,7 @@
 
 #import "GuardianAppDelegate.h"
 #import "TagListViewController.h"
+#import "ContentListViewController.h"
 #import "RegexKitLite.h"
 
 
@@ -53,12 +54,15 @@
 */
 
 - (void)viewWillAppear:(BOOL)animated {
-	NSLog(@"I'm a taglistviewcontroller.");
     [super viewWillAppear:animated];
-	self.tags = [NSDictionary dictionary];
+	if(!self.tags) {
+		self.tags = [NSDictionary dictionary];
 	
-	GuardianAppDelegate *delegate = (GuardianAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[delegate.guardian allSubjectsWithDelegate:self didSucceedSelector:@selector(setTagData:)];
+		GuardianAppDelegate *delegate = (GuardianAppDelegate *)[[UIApplication sharedApplication] delegate];
+		[delegate.guardian allSubjectsWithDelegate:self didSucceedSelector:@selector(setTagData:)];
+	} else {
+		NSLog(@"Not populating tag list view from API, already got some tags.");
+	}
 }
 
 /*
@@ -132,10 +136,17 @@ titleForHeaderInSection:(NSInteger)section {
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
+	NSArray *sections = [[self.tags_grouped allKeys] sortedArrayUsingSelector:@selector(compare:)];
+	NSDictionary *section = [self.tags_grouped objectForKey:[sections objectAtIndex:indexPath.section]];
+	NSArray *filters = [[section allValues] sortedArrayUsingSelector:@selector(compare:)];
+	
+	ContentListViewController *controller = [[ContentListViewController alloc]
+										  initWithNibName:@"ContentListViewController" 
+										  bundle:nil]; 
+	controller.filter = [filters objectAtIndex: indexPath.row];
+	NSLog(@"Going to content list with filter %@", controller.filter);
+	[self.navigationController pushViewController:controller animated:YES]; 
+	[controller release]; 	
 }
 
 
@@ -180,6 +191,9 @@ titleForHeaderInSection:(NSInteger)section {
 
 
 - (void)dealloc {
+	[tableView release];
+	[tags release];
+	[tags_grouped release];
     [super dealloc];
 }
 

@@ -15,9 +15,10 @@
 @implementation ContentListViewController
 @synthesize contents;
 @synthesize tableView;
+@synthesize filter;
 
 - (void)setContentList:(NSArray *)content {
-	NSLog(@"Content:\n%@", content);
+	//NSLog(@"Content:\n%@", content);
 	self.contents = content;
 	[[self tableView] reloadData];
 }
@@ -45,7 +46,11 @@
 	self.contents = [NSArray array];
 	
 	GuardianAppDelegate *delegate = (GuardianAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[delegate.guardian latestContentWithDelegate:self didSucceedSelector:@selector(setContentList:)];
+	if(self.filter) {
+		[delegate.guardian searchWithFilter:self.filter withDelegate:self didSucceedSelector:@selector(setContentList:)];
+	} else {
+		[delegate.guardian latestContentWithDelegate:self didSucceedSelector:@selector(setContentList:)];
+	}
 }
 
 /*
@@ -112,7 +117,7 @@
 	contentViewController = [[ContentViewController alloc] 
 							 initWithNibName:@"ContentViewController"
 							 bundle:nil]; 
-	contentViewController.url = content.url;
+	contentViewController.content = content;
 	[self.navigationController pushViewController:contentViewController animated:YES]; 
 	[contentViewController release]; 
 }
@@ -159,6 +164,8 @@
 
 
 - (void)dealloc {
+	[tableView release];
+	[contents release];
     [super dealloc];
 }
 

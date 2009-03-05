@@ -12,8 +12,10 @@
 @interface ContentListViewController : UITableViewController {
 	NSArray *contents;
 	IBOutlet UITableView *tableView;
+	NSString *filter;
 }
 
+@property (nonatomic, retain) NSString *filter;
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) NSArray *contents;
 @end

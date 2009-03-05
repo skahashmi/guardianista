@@ -19,4 +19,6 @@
 @property (nonatomic, retain) NSDictionary *tags;
 @property (nonatomic, retain) NSDictionary *tags_grouped;
 
+- (void)setTagData:(NSDictionary *)t;
+
 @end

@@ -30,6 +30,7 @@
 
 
 - (void)dealloc {
+	[guardian release];
 	[navigationController release];
 	[window release];
 	[super dealloc];

@@ -7,10 +7,10 @@
 //
 
 #import "ContentViewController.h"
-
+#import "TagListViewController.h"
 
 @implementation ContentViewController
-@synthesize url;
+@synthesize content;
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -35,10 +35,10 @@
 {
     [super viewDidAppear:animated];
 
-	if(self.url) {
-		NSLog(@"Here goes: %@", self.url);
+	if(self.content) {
+		NSLog(@"Here goes: %@", self.content.url);
 		NSLog(@"%@", webView);
-		NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.url]];
+		NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.content.url]];
 		[webView loadRequest:request];
 	}
 }	
@@ -51,6 +51,15 @@
 }
 */
 
+- (IBAction)tagButtonWasPressed {
+	TagListViewController *controller = [[TagListViewController alloc]
+				  initWithNibName:@"TagListViewController" 
+				  bundle:nil]; 	
+	[controller setTagData:self.content.tags];
+	[self.navigationController pushViewController:controller animated:YES]; 
+	[controller release]; 
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
     // Release anything that's not essential, such as cached data
@@ -58,6 +67,7 @@
 
 
 - (void)dealloc {
+	[content release];
     [super dealloc];
 }
 

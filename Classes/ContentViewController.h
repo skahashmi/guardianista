@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "GuardianContent.h"
 
 @interface ContentViewController : UIViewController {
 	IBOutlet UIWebView *webView;
+	GuardianContent *content;
 	NSString *url;
 }
 
-@property (nonatomic,retain) NSString *url;
+- (IBAction)tagButtonWasPressed;
+
+@property (nonatomic,retain) GuardianContent *content;
 
 @end

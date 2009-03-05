@@ -18,4 +18,17 @@
 @synthesize imageUrl;
 @synthesize publicationDate;
 @synthesize tags;
+
+- (void)dealloc {
+	[tags release];
+	[publicationDate release];
+	[imageUrl release];
+	[byline release];
+	[standfirst release];
+	[headline release];
+	[type release];
+	[url release];
+	[super dealloc];
+}
+
 @end
