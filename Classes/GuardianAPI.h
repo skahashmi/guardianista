@@ -20,5 +20,6 @@
 - (void) latestContentWithDelegate:(id)successDelegate didSucceedSelector:(SEL)sel;
 - (void) searchQuery:(NSString *)q withDelegate:(id)successDelegate didSucceedSelector:(SEL)sel;
 - (void) searchQuery:(NSString *)q withFilter:(NSString *)filter withDelegate:(id)successDelegate didSucceedSelector:(SEL)sel;
+- (void) allSubjectsWithDelegate: (id)successDelegate didSucceedSelector:(SEL)sel;
 
 @end

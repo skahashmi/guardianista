@@ -34,78 +34,112 @@
 - (void) searchQuery:(NSString *)q withFilter:(NSString *)filter withDelegate:(id)successDelegate didSucceedSelector:(SEL)sel {
 }
 
+- (void) allSubjectsWithDelegate: (id)successDelegate didSucceedSelector:(SEL)sel {
+	[self callMethod:@"all-subjects" withParams:[NSDictionary dictionaryWithObject:@"500" forKey:@"count"] withDelegate:successDelegate didSucceedSelector:sel];
+}
+
+- (NSDictionary *)parseTagData:(NSData *)data {
+	NSArray *contentFields = PerformXMLXPathQuery(data, @"/tags/tag");
+	
+	NSMutableDictionary *tags = [NSMutableDictionary dictionary];
+	NSString *name, *filter;
+
+	for(NSDictionary *tag in contentFields) {
+		for(NSDictionary *attr in [tag objectForKey:@"nodeAttributeArray"]) {
+			NSString *key = [attr objectForKey:@"attributeName"];
+			if([key isEqualToString:@"name"]) {
+				name = [attr objectForKey:@"nodeContent"];
+			}
+			if([key isEqualToString:@"filter"]) {
+				filter = [attr objectForKey:@"nodeContent"];
+			}
+		}
+		[tags setObject:filter forKey:name];
+	}
+	return tags;
+}
+
+- (NSArray *)parseSearchData:(NSData *)data {
+	NSDateFormatter *sISO8601 = [[NSDateFormatter alloc] init];
+	
+	sISO8601.timeStyle = NSDateFormatterFullStyle;
+	sISO8601.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss";
+	NSMutableArray *content = [NSMutableArray array];
+	
+	NSArray *contentFields = PerformXMLXPathQuery(data, @"/search/results/content");
+	
+	NSDictionary *info;
+	for(info in contentFields) {
+		GuardianContent *c = [[[GuardianContent alloc] init] autorelease];
+		c.headline = @"Foo!";
+		NSDictionary *keyvalue;
+		for(keyvalue in [info objectForKey:@"nodeAttributeArray"]) {
+			NSString *key = [keyvalue objectForKey:@"attributeName"];
+			if([key isEqualToString:@"type"]) {
+				c.type = [keyvalue objectForKey:@"nodeContent"];
+			}
+			if([key isEqualToString:@"web-url"]) {
+				c.url = [keyvalue objectForKey:@"nodeContent"];
+			}
+		}
+		for(keyvalue in [info objectForKey:@"nodeChildArray"]) {
+			NSString *key = [keyvalue objectForKey:@"nodeName"];
+			if([key isEqualToString:@"headline"]) {
+				c.headline = [keyvalue objectForKey:@"nodeContent"];
+			}
+			if([key isEqualToString:@"trail-image"]) {
+				c.imageUrl = [keyvalue objectForKey:@"nodeContent"];
+			}
+			if([key isEqualToString:@"byline"]) {
+				c.byline = [keyvalue objectForKey:@"nodeContent"];
+			}
+			if([key isEqualToString:@"standfirst"]) {
+				c.standfirst = [keyvalue objectForKey:@"nodeContent"];
+			}
+			if([key isEqualToString:@"publication-date"]) {
+				c.publicationDate = [sISO8601 dateFromString: [keyvalue objectForKey:@"nodeContent"]];
+			}			
+			if([key isEqualToString:@"tagged-with"]) {
+				NSArray *taggedWith = [keyvalue objectForKey:@"nodeChildArray"];
+				NSMutableDictionary *tags = [NSMutableDictionary dictionary];
+				NSDictionary *t;
+				for(t in taggedWith) {
+					NSDictionary *t2;
+					NSString *name;
+					NSString *filter;
+					
+					for(t2 in [t objectForKey:@"nodeAttributeArray"]) {
+						
+						NSString *key = [t2 objectForKey:@"attributeName"];
+						if([key isEqualToString:@"name"]) {
+							name = [t2 objectForKey:@"nodeContent"];
+						}				
+						if([key isEqualToString:@"filter"]) {
+							filter = [t2 objectForKey:@"nodeContent"];
+						}
+					}
+					[tags setObject:filter forKey:name];						
+				}
+				c.tags = tags;
+			}
+		}
+		[content addObject:c];
+	}
+	[sISO8601 release];
+	return content;
+}	
+
 - (void)myFetcher:(GTMHTTPFetcher *)fetcher finishedWithData:(NSData *)data {
 	NSString *method = [[fetcher properties] objectForKey:@"method"];
 	SEL sel = [[[fetcher properties] objectForKey:@"selector"] pointerValue];
 	id delegate = [[fetcher properties] objectForKey:@"delegate"];
 
 	if([method isEqualToString:@"search"]) {
-		NSDateFormatter *sISO8601 = [[NSDateFormatter alloc] init];
-
-		sISO8601.timeStyle = NSDateFormatterFullStyle;
-		sISO8601.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss";
-		NSMutableArray *content = [NSMutableArray array];
-
-		NSArray *contentFields = PerformXMLXPathQuery(data, @"/search/results/content");
-
-		NSDictionary *info;
-		for(info in contentFields) {
-			GuardianContent *c = [[[GuardianContent alloc] init] autorelease];
-			c.headline = @"Foo!";
-			NSDictionary *keyvalue;
-			for(keyvalue in [info objectForKey:@"nodeAttributeArray"]) {
-				NSString *key = [keyvalue objectForKey:@"attributeName"];
-				if([key isEqualToString:@"type"]) {
-					c.type = [keyvalue objectForKey:@"nodeContent"];
-				}
-				if([key isEqualToString:@"web-url"]) {
-					c.url = [keyvalue objectForKey:@"nodeContent"];
-				}
-			}
-			for(keyvalue in [info objectForKey:@"nodeChildArray"]) {
-				NSString *key = [keyvalue objectForKey:@"nodeName"];
-				if([key isEqualToString:@"headline"]) {
-					c.headline = [keyvalue objectForKey:@"nodeContent"];
-				}
-				if([key isEqualToString:@"trail-image"]) {
-					c.imageUrl = [keyvalue objectForKey:@"nodeContent"];
-				}
-				if([key isEqualToString:@"byline"]) {
-					c.byline = [keyvalue objectForKey:@"nodeContent"];
-				}
-				if([key isEqualToString:@"standfirst"]) {
-					c.standfirst = [keyvalue objectForKey:@"nodeContent"];
-				}
-				if([key isEqualToString:@"publication-date"]) {
-					c.publicationDate = [sISO8601 dateFromString: [keyvalue objectForKey:@"nodeContent"]];
-				}			
-				if([key isEqualToString:@"tagged-with"]) {
-					NSArray *taggedWith = [keyvalue objectForKey:@"nodeChildArray"];
-					NSMutableDictionary *tags = [NSMutableDictionary dictionary];
-					NSDictionary *t;
-					for(t in taggedWith) {
-						NSDictionary *t2;
-						NSString *name;
-						NSString *filter;
-
-						for(t2 in [t objectForKey:@"nodeAttributeArray"]) {
-
-							NSString *key = [t2 objectForKey:@"attributeName"];
-							if([key isEqualToString:@"name"]) {
-								name = [t2 objectForKey:@"nodeContent"];
-							}				
-							if([key isEqualToString:@"filter"]) {
-								filter = [t2 objectForKey:@"nodeContent"];
-							}
-						}
-						[tags setObject:filter forKey:name];						
-					}
-					c.tags = tags;
-				}
-			}
-			[content addObject:c];
-		}
-		[sISO8601 release];
+		NSArray *content = [self parseSearchData: data];
+		[delegate performSelector:sel withObject:content];
+	}
+	if([method isEqualToString:@"all-subjects"]) {
+		NSDictionary *content = [self parseTagData: data];
 		[delegate performSelector:sel withObject:content];
 	}
 }

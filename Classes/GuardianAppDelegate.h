@@ -14,11 +14,13 @@
     UIWindow *window;
     UINavigationController *navigationController;
 	NSArray *contents;
+	NSDictionary *tags;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) NSArray *contents;
+@property (nonatomic, retain) NSDictionary *tags;
 
 @end
 
