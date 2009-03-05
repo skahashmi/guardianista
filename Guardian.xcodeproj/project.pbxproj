@@ -38,6 +38,8 @@
 		D9D7DF080F5FE01300E99160 /* search-q_twitter_biz-filter-jemima.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9D7DF030F5FE01300E99160 /* search-q_twitter_biz-filter-jemima.xml */; };
 		D9D7DF090F5FE01300E99160 /* search-q_dopplr.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9D7DF040F5FE01300E99160 /* search-q_dopplr.xml */; };
 		D9D7DF0A0F5FE01300E99160 /* all-subjects.xml in Resources */ = {isa = PBXBuildFile; fileRef = D9D7DF050F5FE01300E99160 /* all-subjects.xml */; };
+		D9D7DFE30F5FF71000E99160 /* ContentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DFE20F5FF71000E99160 /* ContentListViewController.m */; };
+		D9D7E04C0F5FFA1800E99160 /* ContentListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D7E04B0F5FFA1800E99160 /* ContentListViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +97,9 @@
 		D9D7DF030F5FE01300E99160 /* search-q_twitter_biz-filter-jemima.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "search-q_twitter_biz-filter-jemima.xml"; sourceTree = "<group>"; };
 		D9D7DF040F5FE01300E99160 /* search-q_dopplr.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "search-q_dopplr.xml"; sourceTree = "<group>"; };
 		D9D7DF050F5FE01300E99160 /* all-subjects.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "all-subjects.xml"; sourceTree = "<group>"; };
+		D9D7DFE10F5FF71000E99160 /* ContentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentListViewController.h; sourceTree = "<group>"; };
+		D9D7DFE20F5FF71000E99160 /* ContentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentListViewController.m; sourceTree = "<group>"; };
+		D9D7E04B0F5FFA1800E99160 /* ContentListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentListViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +122,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D9D7DFE10F5FF71000E99160 /* ContentListViewController.h */,
+				D9D7DFE20F5FF71000E99160 /* ContentListViewController.m */,
 				D9D7DE010F5EEC4800E99160 /* ContentViewController.h */,
 				D9D7DE020F5EEC4800E99160 /* ContentViewController.m */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
@@ -149,6 +156,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				D9D7DE060F5EEC7B00E99160 /* ContentViewController.xib */,
+				D9D7E04B0F5FFA1800E99160 /* ContentListViewController.xib */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -288,6 +296,7 @@
 				D9D7DF080F5FE01300E99160 /* search-q_twitter_biz-filter-jemima.xml in Resources */,
 				D9D7DF090F5FE01300E99160 /* search-q_dopplr.xml in Resources */,
 				D9D7DF0A0F5FE01300E99160 /* all-subjects.xml in Resources */,
+				D9D7E04C0F5FFA1800E99160 /* ContentListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +324,7 @@
 				D9D7DBBB0F5E9D0E00E99160 /* SBJSON.m in Sources */,
 				D9D7DCA70F5ED1DE00E99160 /* GuardianContent.m in Sources */,
 				D9D7DE030F5EEC4800E99160 /* ContentViewController.m in Sources */,
+				D9D7DFE30F5FF71000E99160 /* ContentListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

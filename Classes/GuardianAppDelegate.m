@@ -14,19 +14,17 @@
 
 @synthesize window;
 @synthesize navigationController;
-@synthesize contents;
 @synthesize tags;
+@synthesize guardian;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
 	// Configure and show the window
 	[window addSubview:[navigationController view]];
 	[window makeKeyAndVisible];
-	guardian = [[GuardianAPI alloc] init];
-	self.contents = [NSArray array];
+	self.guardian = [[GuardianAPI alloc] init];
 	self.tags = [NSArray array];
 
-	[guardian latestContentWithDelegate:self didSucceedSelector:@selector(content:)];
 	[guardian allSubjectsWithDelegate:self didSucceedSelector:@selector(tags:)];
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
@@ -36,20 +34,12 @@
 	NSLog(@"Tags:\n%@", t);
 }
 
-- (void)content:(NSArray *)content {
-	// NSLog(@"Content:\n%@", content);
-	self.contents = content;
-	[[((RootViewController *)[navigationController topViewController]) tableView] reloadData];
-	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-}
-
 - (void)applicationWillTerminate:(UIApplication *)application {
 	// Save data if appropriate
 }
 
 
 - (void)dealloc {
-	[self.contents release];
 	[navigationController release];
 	[window release];
 	[super dealloc];

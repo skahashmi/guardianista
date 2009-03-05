@@ -10,7 +10,7 @@
 #import "GuardianAppDelegate.h"
 #import "GuardianContent.h"
 #import "ContentViewController.h"
-
+#import "ContentListViewController.h"
 
 @implementation RootViewController
 
@@ -67,15 +67,12 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	GuardianAppDelegate *delegate = (GuardianAppDelegate *)[[UIApplication sharedApplication] delegate];
-	return [delegate.contents count];
+	return 2;
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	GuardianAppDelegate *delegate = (GuardianAppDelegate *)[[UIApplication sharedApplication] delegate];
-
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -83,23 +80,34 @@
         cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
     }
     
-	GuardianContent *content = [delegate.contents objectAtIndex:indexPath.row];
-	cell.text = content.headline;
+	switch(indexPath.row) {
+		case 0:
+			cell.text = @"Latest content";
+			break;
+		case 1:
+			cell.text = @"Browse by tag";
+			break;
+	}
 
     return cell;
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	GuardianAppDelegate *delegate = (GuardianAppDelegate *)[[UIApplication sharedApplication] delegate];
-	GuardianContent *content = [delegate.contents objectAtIndex:indexPath.row];
-	ContentViewController *contentViewController;
-	contentViewController = [[ContentViewController alloc] 
-								  initWithNibName:@"ContentViewController" 
-								  bundle:nil]; 
-	contentViewController.url = content.url;
-	[self.navigationController pushViewController:contentViewController animated:YES]; 
-	[contentViewController release]; 
+	UIViewController *controller;
+	NSLog(@"Selected: %d", indexPath.row);
+	switch(indexPath.row) {
+		case 0:
+			controller = [[ContentListViewController alloc]
+									 initWithNibName:@"ContentListViewController" 
+									 bundle:nil]; 
+			break;
+		case 1:
+			return;
+			break;
+	}
+
+	[self.navigationController pushViewController:controller animated:YES]; 
+	[controller release]; 
 }
 
 
