@@ -35,19 +35,14 @@
 	[super viewWillAppear:animated];
 	UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Tags" style:UIBarButtonItemStylePlain target:self action:@selector(tagButtonWasPressed:)]; 
 	self.navigationItem.rightBarButtonItem = button;
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-
 	if(self.content) {
 		NSLog(@"Here goes: %@", self.content.url);
 		NSLog(@"%@", webView);
 		NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.content.url]];
 		[webView loadRequest:request];
+		self.title = self.content.headline;
 	}
-}	
+}
 
 /*
 // Override to allow orientations other than the default portrait orientation.
