@@ -39,40 +39,15 @@
 					<object class="IBUIWebView" id="1029702412">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{0, 80}, {320, 415}}</string>
+						<string key="NSFrameSize">{320, 480}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<object class="NSColor" key="IBUIBackgroundColor" id="318903678">
+						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MSAxIDEAA</bytes>
 						</object>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<bool key="IBUIScalesPageToFit">YES</bool>
-					</object>
-					<object class="IBUIButton" id="869583074">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{228, 20}, {72, 37}}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-						<int key="IBUIContentHorizontalAlignment">0</int>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">Helvetica-Bold</string>
-							<double key="NSSize">1.500000e+01</double>
-							<int key="NSfFlags">16</int>
-						</object>
-						<int key="IBUIButtonType">1</int>
-						<string key="IBUIHighlightedTitle">Tags</string>
-						<string key="IBUIDisabledTitle">Tags</string>
-						<string key="IBUISelectedTitle">Tags</string>
-						<string key="IBUINormalTitle">Tags</string>
-						<reference key="IBUIHighlightedTitleColor" ref="318903678"/>
-						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
-						</object>
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 480}</string>
@@ -113,15 +88,6 @@
 					</object>
 					<int key="connectionID">8</int>
 				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">tagButtonWasPressed</string>
-						<reference key="source" ref="869583074"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">11</int>
-				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -139,7 +105,6 @@
 						<reference key="object" ref="191373211"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="869583074"/>
 							<reference ref="1029702412"/>
 						</object>
 						<reference key="parent" ref="360949347"/>
@@ -160,11 +125,6 @@
 						<reference key="object" ref="1029702412"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">9</int>
-						<reference key="object" ref="869583074"/>
-						<reference key="parent" ref="191373211"/>
-					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -176,14 +136,12 @@
 					<string>1.IBEditorWindowLastContentRect</string>
 					<string>1.IBPluginDependency</string>
 					<string>3.IBPluginDependency</string>
-					<string>9.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>ContentViewController</string>
 					<string>UIResponder</string>
 					<string>{{399, 102}, {320, 480}}</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>

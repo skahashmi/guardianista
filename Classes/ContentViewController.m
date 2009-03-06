@@ -31,6 +31,12 @@
     [super viewDidLoad];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+	[super viewWillAppear:animated];
+	UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Tags" style:UIBarButtonItemStylePlain target:self action:@selector(tagButtonWasPressed:)]; 
+	self.navigationItem.rightBarButtonItem = button;
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -51,7 +57,7 @@
 }
 */
 
-- (IBAction)tagButtonWasPressed {
+- (void)tagButtonWasPressed:(id)sender {
 	TagListViewController *controller = [[TagListViewController alloc]
 				  initWithNibName:@"TagListViewController" 
 				  bundle:nil]; 	

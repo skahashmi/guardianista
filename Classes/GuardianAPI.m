@@ -21,6 +21,7 @@
 	for(id key in params) {
 		url = [url stringByAppendingFormat:@"&%@=%@", key, [[params objectForKey:key] URLEncodedString]];
 	}
+	NSLog(@"API call: %@", url);
 	return url;
 }
 
@@ -168,6 +169,7 @@
 	
 #ifdef GUARDIAN_OFFLINE_MOCK
 	NSString *filename = nil;
+	
 	if([method isEqualToString:@"search"]) {
 		filename = @"search_order-by-date";
 		if([params objectForKey:@"q"]) {
