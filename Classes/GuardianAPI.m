@@ -41,7 +41,7 @@
 }
 
 - (void) allSubjectsWithDelegate: (id)successDelegate didSucceedSelector:(SEL)sel {
-	[self callMethod:@"all-subjects" withParams:[NSDictionary dictionaryWithObject:@"500" forKey:@"count"] withDelegate:successDelegate didSucceedSelector:sel];
+	[self callMethod:@"tags" withParams:[NSDictionary dictionaryWithObject:@"500" forKey:@"count"] withDelegate:successDelegate didSucceedSelector:sel];
 }
 
 - (NSDictionary *)parseTagData:(NSData *)data {
@@ -149,7 +149,7 @@
 		NSArray *content = [self parseSearchData: data];
 		[delegate performSelector:sel withObject:content];
 	}
-	if([method isEqualToString:@"all-subjects"]) {
+	if([method isEqualToString:@"tags"]) {
 		NSDictionary *content = [self parseTagData: data];
 		[delegate performSelector:sel withObject:content];
 	}
@@ -184,7 +184,7 @@
 			}
 		}
 	}
-	if([method isEqualToString:@"all-subjects"]) {
+	if([method isEqualToString:@"tags"]) {
 		filename = @"all-subjects";
 	}
 	if(filename) {
