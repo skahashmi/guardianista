@@ -184,25 +184,11 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				D9D7DFE10F5FF71000E99160 /* ContentListViewController.h */,
-				D9D7DFE20F5FF71000E99160 /* ContentListViewController.m */,
-				D9B249660F61F5D100F4C304 /* ContentTableViewCell.h */,
-				D9B249670F61F5D100F4C304 /* ContentTableViewCell.m */,
-				D9B249690F61F6D200F4C304 /* ContentView.h */,
-				D9B2496A0F61F6D200F4C304 /* ContentView.m */,
-				D9D7DE010F5EEC4800E99160 /* ContentViewController.h */,
-				D9D7DE020F5EEC4800E99160 /* ContentViewController.m */,
-				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
-				28C286E00D94DF7D0034E888 /* RootViewController.m */,
+				D9B24CF30F65D80D00F4C304 /* Controllers */,
+				D9B24CF40F65D81500F4C304 /* Views */,
 				1D3623240D0F684500981E51 /* GuardianAppDelegate.h */,
 				1D3623250D0F684500981E51 /* GuardianAppDelegate.m */,
-				D9B24B9D0F65922600F4C304 /* GuardianAPIKey.h */,
-				D9D7DB6B0F5E9AEE00E99160 /* GuardianAPI.h */,
-				D9D7DB6C0F5E9AEE00E99160 /* GuardianAPI.m */,
-				D9D7DCA50F5ED1DE00E99160 /* GuardianContent.h */,
-				D9D7DCA60F5ED1DE00E99160 /* GuardianContent.m */,
-				D9B3CEFE0F5FFC800078DB66 /* TagListViewController.h */,
-				D9B3CEFF0F5FFC800078DB66 /* TagListViewController.m */,
+				D9B24CF20F65D7EF00F4C304 /* Guardian API */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -360,6 +346,44 @@
 				D9B24BF40F65BF8F00F4C304 /* NSNumber-SQLitePersistence.h */,
 			);
 			name = SQLPersistentObjects;
+			sourceTree = "<group>";
+		};
+		D9B24CF20F65D7EF00F4C304 /* Guardian API */ = {
+			isa = PBXGroup;
+			children = (
+				D9B24B9D0F65922600F4C304 /* GuardianAPIKey.h */,
+				D9D7DB6B0F5E9AEE00E99160 /* GuardianAPI.h */,
+				D9D7DB6C0F5E9AEE00E99160 /* GuardianAPI.m */,
+				D9D7DCA50F5ED1DE00E99160 /* GuardianContent.h */,
+				D9D7DCA60F5ED1DE00E99160 /* GuardianContent.m */,
+			);
+			name = "Guardian API";
+			sourceTree = "<group>";
+		};
+		D9B24CF30F65D80D00F4C304 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D9D7DFE10F5FF71000E99160 /* ContentListViewController.h */,
+				D9D7DFE20F5FF71000E99160 /* ContentListViewController.m */,
+				D9D7DE010F5EEC4800E99160 /* ContentViewController.h */,
+				D9D7DE020F5EEC4800E99160 /* ContentViewController.m */,
+				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
+				28C286E00D94DF7D0034E888 /* RootViewController.m */,
+				D9B3CEFE0F5FFC800078DB66 /* TagListViewController.h */,
+				D9B3CEFF0F5FFC800078DB66 /* TagListViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D9B24CF40F65D81500F4C304 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D9B249660F61F5D100F4C304 /* ContentTableViewCell.h */,
+				D9B249670F61F5D100F4C304 /* ContentTableViewCell.m */,
+				D9B249690F61F6D200F4C304 /* ContentView.h */,
+				D9B2496A0F61F6D200F4C304 /* ContentView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		D9D7DB6E0F5E9B0200E99160 /* 3rd Party */ = {

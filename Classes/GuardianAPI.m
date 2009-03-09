@@ -52,6 +52,7 @@
 		[tags setObject:[info objectForKey:@"filter"] forKey:[info objectForKey:@"name"]];
 	}
 	[tags autorelease];
+	[json release];
 	return tags;
 }
 
