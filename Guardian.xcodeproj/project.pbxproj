@@ -16,6 +16,8 @@
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		D992C0E10F6013B7005085D7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D992C0E00F6013B7005085D7 /* Icon.png */; };
+		D9B249680F61F5D100F4C304 /* ContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B249670F61F5D100F4C304 /* ContentTableViewCell.m */; };
+		D9B2496B0F61F6D200F4C304 /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B2496A0F61F6D200F4C304 /* ContentView.m */; };
 		D9B3CF000F5FFC800078DB66 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B3CEFF0F5FFC800078DB66 /* TagListViewController.m */; };
 		D9B3CF130F5FFEA50078DB66 /* TagListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9B3CF120F5FFEA50078DB66 /* TagListViewController.xib */; };
 		D9D7DB6D0F5E9AEE00E99160 /* GuardianAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7DB6C0F5E9AEE00E99160 /* GuardianAPI.m */; };
@@ -60,6 +62,10 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D992C0E00F6013B7005085D7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		D9B249660F61F5D100F4C304 /* ContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentTableViewCell.h; sourceTree = "<group>"; };
+		D9B249670F61F5D100F4C304 /* ContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentTableViewCell.m; sourceTree = "<group>"; };
+		D9B249690F61F6D200F4C304 /* ContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentView.h; sourceTree = "<group>"; };
+		D9B2496A0F61F6D200F4C304 /* ContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentView.m; sourceTree = "<group>"; };
 		D9B3CEFE0F5FFC800078DB66 /* TagListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListViewController.h; sourceTree = "<group>"; };
 		D9B3CEFF0F5FFC800078DB66 /* TagListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListViewController.m; sourceTree = "<group>"; };
 		D9B3CF120F5FFEA50078DB66 /* TagListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagListViewController.xib; sourceTree = "<group>"; };
@@ -131,6 +137,10 @@
 			children = (
 				D9D7DFE10F5FF71000E99160 /* ContentListViewController.h */,
 				D9D7DFE20F5FF71000E99160 /* ContentListViewController.m */,
+				D9B249660F61F5D100F4C304 /* ContentTableViewCell.h */,
+				D9B249670F61F5D100F4C304 /* ContentTableViewCell.m */,
+				D9B249690F61F6D200F4C304 /* ContentView.h */,
+				D9B2496A0F61F6D200F4C304 /* ContentView.m */,
 				D9D7DE010F5EEC4800E99160 /* ContentViewController.h */,
 				D9D7DE020F5EEC4800E99160 /* ContentViewController.m */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
@@ -339,6 +349,8 @@
 				D9D7DE030F5EEC4800E99160 /* ContentViewController.m in Sources */,
 				D9D7DFE30F5FF71000E99160 /* ContentListViewController.m in Sources */,
 				D9B3CF000F5FFC800078DB66 /* TagListViewController.m in Sources */,
+				D9B249680F61F5D100F4C304 /* ContentTableViewCell.m in Sources */,
+				D9B2496B0F61F6D200F4C304 /* ContentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

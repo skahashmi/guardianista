@@ -10,6 +10,7 @@
 #import "GuardianContent.h"
 #import "ContentListViewController.h"
 #import "ContentViewController.h"
+#import "ContentTableViewCell.h"
 
 
 @implementation ContentListViewController
@@ -99,13 +100,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ContentTableViewCell *cell = (ContentTableViewCell *)[tView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[[ContentTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
     }
     
     GuardianContent *content = [self.contents objectAtIndex:indexPath.row];
-	cell.text = content.headline;
+	[cell setGuardianContent:content];
 
     return cell;
 }
