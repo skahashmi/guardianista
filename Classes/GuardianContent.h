@@ -7,19 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SQLitePersistentObject.h"
 
-
-@interface GuardianContent : NSObject {
+@interface GuardianContent : SQLitePersistentObject {
+	NSInteger contentId;
 	NSString *url;
 	NSString *type;
 	NSString *headline;
 	NSString *standfirst;
 	NSString *byline;
 	NSString *imageUrl;
+	NSString *body;
 	NSDate *publicationDate;
 	NSDictionary *tags;
 }
 
+@property (nonatomic) NSInteger contentId;
+@property (nonatomic, retain) NSString *body;
 @property (nonatomic, retain) NSString *url;
 @property (nonatomic, retain) NSString *type;
 @property (nonatomic, retain) NSString *headline;

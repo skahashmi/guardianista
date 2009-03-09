@@ -11,12 +11,13 @@
 #import "NSString+URLEncoding.h"
 #import "GTMHTTPFetcher.h"
 #import "XPathQuery.h"
-
+#import "NSString+SBJSON.h"
 
 @implementation GuardianAPI
 - (NSString *) urlForMethod:(NSString *)methodName withParams:(NSDictionary *)params {
 	NSString *url = [NSString stringWithFormat:@"%@/%@?", GUARDIAN_API_PREFIX, methodName];
 	url = [url stringByAppendingFormat:@"%@=%@", @"api_key", [GUARDIAN_API_KEY URLEncodedString]];
+	url = [url stringByAppendingFormat:@"&%@=%@", @"format", @"json"];
 
 	for(id key in params) {
 		url = [url stringByAppendingFormat:@"&%@=%@", key, [[params objectForKey:key] URLEncodedString]];
@@ -26,7 +27,7 @@
 }
 
 - (void) latestContentWithDelegate:(id)successDelegate didSucceedSelector:(SEL)sel {
-	[self callMethod:@"search" withParams:[NSDictionary dictionaryWithObject:@"desc" forKey:@"order-by-date"] withDelegate:successDelegate didSucceedSelector:sel];
+	[self callMethod:@"search" withParams:[NSDictionary dictionaryWithObjectsAndKeys:@"desc",@"order-by-date",@"50",@"count",nil] withDelegate:successDelegate didSucceedSelector:sel];
 }
 
 - (void) searchWithFilter:(NSString *)filter withDelegate:(id)successDelegate didSucceedSelector:(SEL)sel {
@@ -41,10 +42,20 @@
 }
 
 - (void) allSubjectsWithDelegate: (id)successDelegate didSucceedSelector:(SEL)sel {
-	[self callMethod:@"tags" withParams:[NSDictionary dictionaryWithObject:@"500" forKey:@"count"] withDelegate:successDelegate didSucceedSelector:sel];
+	[self callMethod:@"tags" withParams:[NSDictionary dictionaryWithObject:@"100" forKey:@"count"] withDelegate:successDelegate didSucceedSelector:sel];
 }
 
-- (NSDictionary *)parseTagData:(NSData *)data {
+- (NSDictionary *)parseJsonTagData:(NSData *)data {
+	NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+	NSMutableDictionary *tags = [NSMutableDictionary dictionary];
+	for(NSDictionary *info in [[[json JSONValue] objectForKey:@"subjects"] objectForKey:@"tags"]) {
+		[tags setObject:[info objectForKey:@"filter"] forKey:[info objectForKey:@"name"]];
+	}
+	[tags autorelease];
+	return tags;
+}
+
+- (NSDictionary *)parseXmlTagData:(NSData *)data {
 	NSArray *contentFields = PerformXMLXPathQuery(data, @"/tags/tag");
 	
 	NSMutableDictionary *tags = [NSMutableDictionary dictionary];
@@ -68,7 +79,47 @@
 	return tags;
 }
 
-- (NSArray *)parseSearchData:(NSData *)data {
+- (NSArray *)parseJsonSearchData:(NSData *)data {
+	NSDateFormatter *sISO8601 = [[NSDateFormatter alloc] init];
+	
+	sISO8601.timeStyle = NSDateFormatterFullStyle;
+	sISO8601.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss";
+	
+	NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+	NSMutableArray *content = [NSMutableArray array];
+	for(NSDictionary *info in [[[json JSONValue] objectForKey:@"search"] objectForKey:@"results"]) {
+		GuardianContent *c = [[[GuardianContent alloc] init] autorelease];
+		c.headline = [info objectForKey:@"headline"];
+		c.type = [info objectForKey:@"type"];
+		c.standfirst = [info objectForKey:@"standfirst"];
+		c.byline = [info objectForKey:@"byline"];
+		c.url = [info objectForKey:@"webUrl"];
+		c.publicationDate = [sISO8601 dateFromString: [info objectForKey:@"publicationDate"]];
+		c.imageUrl = [info objectForKey:@"trailImage"];
+		if([c.type isEqualToString:@"article"]) {
+			c.body = [[info objectForKey:@"typeSpecific"] objectForKey:@"body"];
+		}
+		NSMutableDictionary *tags = [NSMutableDictionary dictionary];
+		for(NSDictionary *tag in [info objectForKey:@"tags"]) {
+			[tags setObject:[tag objectForKey:@"filter"] forKey:[tag objectForKey:@"name"]];
+		}
+		c.tags = tags;
+		
+		NSScanner* scanner = [NSScanner scannerWithString:[info objectForKey:@"id"]];
+		NSInteger anInteger;
+		if([scanner scanInt:&anInteger] == YES) {
+			c.contentId = anInteger;
+		}
+		
+		[c save];
+		[content addObject:c];
+	}
+	[sISO8601 release];
+	[json release];
+	return content;
+}
+
+- (NSArray *)parseXmlSearchData:(NSData *)data {
 	NSDateFormatter *sISO8601 = [[NSDateFormatter alloc] init];
 	
 	sISO8601.timeStyle = NSDateFormatterFullStyle;
@@ -80,7 +131,6 @@
 	NSDictionary *info;
 	for(info in contentFields) {
 		GuardianContent *c = [[[GuardianContent alloc] init] autorelease];
-		c.headline = @"Foo!";
 		NSDictionary *keyvalue;
 		for(keyvalue in [info objectForKey:@"nodeAttributeArray"]) {
 			NSString *key = [keyvalue objectForKey:@"attributeName"];
@@ -90,12 +140,22 @@
 			if([key isEqualToString:@"web-url"]) {
 				c.url = [keyvalue objectForKey:@"nodeContent"];
 			}
+			if([key isEqualToString:@"id"]) {
+				NSString *cid = [keyvalue objectForKey:@"nodeContent"];
+				NSScanner* scanner = [NSScanner scannerWithString:cid];
+				NSInteger anInteger;
+				
+				if([scanner scanInt:&anInteger] == YES) {
+					c.contentId = anInteger;
+				}
+			}			
 		}
 		for(keyvalue in [info objectForKey:@"nodeChildArray"]) {
 			NSString *key = [keyvalue objectForKey:@"nodeName"];
 			if([key isEqualToString:@"headline"]) {
 				c.headline = [keyvalue objectForKey:@"nodeContent"];
 			}
+			
 			if([key isEqualToString:@"trail-image"]) {
 				c.imageUrl = [keyvalue objectForKey:@"nodeContent"];
 			}
@@ -107,7 +167,7 @@
 			}
 			if([key isEqualToString:@"publication-date"]) {
 				c.publicationDate = [sISO8601 dateFromString: [keyvalue objectForKey:@"nodeContent"]];
-			}			
+			}
 			if([key isEqualToString:@"tagged-with"]) {
 				NSArray *taggedWith = [keyvalue objectForKey:@"nodeChildArray"];
 				NSMutableDictionary *tags = [NSMutableDictionary dictionary];
@@ -134,6 +194,7 @@
 				c.tags = tags;
 			}
 		}
+		[c save];
 		[content addObject:c];
 	}
 	[sISO8601 release];
@@ -146,11 +207,11 @@
 	id delegate = [[fetcher properties] objectForKey:@"delegate"];
 
 	if([method isEqualToString:@"search"]) {
-		NSArray *content = [self parseSearchData: data];
+		NSArray *content = [self parseJsonSearchData: data];
 		[delegate performSelector:sel withObject:content];
 	}
 	if([method isEqualToString:@"tags"]) {
-		NSDictionary *content = [self parseTagData: data];
+		NSDictionary *content = [self parseJsonTagData: data];
 		[delegate performSelector:sel withObject:content];
 	}
 }

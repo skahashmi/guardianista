@@ -8,7 +8,7 @@
 
 #import "GuardianAppDelegate.h"
 #import "RootViewController.h"
-
+#import "SQLiteInstanceManager.h"
 
 @implementation GuardianAppDelegate
 
@@ -22,6 +22,12 @@
 	[window addSubview:[navigationController view]];
 	[window makeKeyAndVisible];
 	self.guardian = [[GuardianAPI alloc] init];
+	NSArray *searchPaths =  NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentFolderPath = [searchPaths objectAtIndex: 0]; 
+	
+	NSString *dbpath = [documentFolderPath stringByAppendingPathComponent: @"guardian.db"];
+	
+	[[SQLiteInstanceManager sharedManager] setDatabaseFilepath:dbpath];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

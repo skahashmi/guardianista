@@ -11,7 +11,9 @@
 
 @interface ContentView : UIView {
 	GuardianContent *content;
+	UIImage *image;
 }
 
+@property (nonatomic, retain) UIImage *image;
 @property (nonatomic, retain) GuardianContent *content;
 @end

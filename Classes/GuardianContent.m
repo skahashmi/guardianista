@@ -10,6 +10,8 @@
 
 
 @implementation GuardianContent
+@synthesize contentId;
+@synthesize body;
 @synthesize url;
 @synthesize type;
 @synthesize headline;

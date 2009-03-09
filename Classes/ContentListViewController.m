@@ -123,6 +123,14 @@
 	[contentViewController release]; 
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	GuardianContent *content = [self.contents objectAtIndex:indexPath.row];
+	CGSize constSize = { 320.0f, 20000.0f };
+
+	CGSize headlineSize = [content.headline sizeWithFont:[UIFont boldSystemFontOfSize:14] constrainedToSize:constSize lineBreakMode:UILineBreakModeWordWrap];
+	CGSize standfirstSize = [content.standfirst sizeWithFont:[UIFont systemFontOfSize:11] constrainedToSize:constSize lineBreakMode:UILineBreakModeWordWrap];
+	return headlineSize.height + standfirstSize.height;
+}
 
 /*
 // Override to support conditional editing of the table view.

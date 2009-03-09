@@ -15,7 +15,7 @@
 	NSString *url;
 }
 
-- (IBAction)tagButtonWasPressed;
+- (void)tagButtonWasPressed:(id)sender;
 
 @property (nonatomic,retain) GuardianContent *content;
 

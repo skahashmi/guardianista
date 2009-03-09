@@ -12,8 +12,11 @@
 
 @interface ContentTableViewCell : UITableViewCell {
 	ContentView *guardianContentView;
+	UIImageView *imageView;
 }
 
+@property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) ContentView *guardianContentView;
+
 - (void)setGuardianContent:(GuardianContent *)content;
 @end
