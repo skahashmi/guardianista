@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-#import "GuardianAPIKey.h"
+// Externalising the API key.
+// Should be a single-line file containing the line: #define GUARDIAN_API_KEY @"5yblahlblaahlablahblah"
+#import "GuardianAPIKey.h" 
+
 #define GUARDIAN_API_PREFIX @"http://api.guardianapis.com/content"
 // #define GUARDIAN_OFFLINE_MOCK 1
 
