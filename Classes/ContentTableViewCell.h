@@ -11,12 +11,16 @@
 #import "ContentView.h"
 
 @interface ContentTableViewCell : UITableViewCell {
-	ContentView *guardianContentView;
 	UIImageView *imageView;
+	UILabel *headline;
+	UILabel *standfirst;
+	GuardianContent *guardianContent;
 }
 
 @property (nonatomic, retain) UIImageView *imageView;
-@property (nonatomic, retain) ContentView *guardianContentView;
+@property (nonatomic, retain) UILabel *headline;
+@property (nonatomic, retain) UILabel *standfirst;
+@property (nonatomic, retain) GuardianContent *guardianContent;
 
 - (void)setGuardianContent:(GuardianContent *)content;
 @end
