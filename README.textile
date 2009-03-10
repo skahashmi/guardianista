@@ -1,0 +1,22 @@
+h1. Guardianista
+
+A simple UINavigationController browser for the Guardian newspaper's content API: http://www.guardian.co.uk/open-platform
+
+Unfinished and open to contributions.
+
+h2. Issues and TODOs
+
+* Unfinished app
+* Some crashes
+* Stores content in SQLite database but doesn't do anything with that store
+* Doesn't iterate over all tags or articles using pagination options of the API
+* Custom UI cells are the slow-scrolling kind made up of subviews rather than fast-rendered custom views
+
+h2. Libraries used
+
+* Everything in http://www.hackdiary.com/2009/01/26/switching-from-scripting-languages-to-objective-c-and-iphone-useful-libraries/
+* SQLitePersistentObjects
+
+h2. Licensing
+
+See the included file LICENSE. All third-party libraries licensed as per their author's wishes.
