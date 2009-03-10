@@ -10,7 +10,7 @@
 #import "TagListViewController.h"
 
 @implementation ContentViewController
-@synthesize content;
+@synthesize content, body, byline, headline, scrollView;
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -37,10 +37,16 @@
 	self.navigationItem.rightBarButtonItem = button;
 	if(self.content) {
 		NSLog(@"Here goes: %@", self.content.url);
-		NSLog(@"%@", webView);
-		NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.content.url]];
-		[webView loadRequest:request];
+		// NSLog(@"%@", webView);
+		// NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.content.url]];
+		// [webView loadRequest:request];
 		self.title = self.content.headline;
+		self.headline.text = self.content.headline;
+		self.byline.text = self.content.byline;
+		self.body.text = self.content.body;
+		[self.body sizeToFit];
+		CGSize totalSize = CGSizeMake( self.scrollView.contentSize.width, self.body.frame.size.height + self.body.frame.origin.y + 10.0f );
+		self.scrollView.contentSize = totalSize;
 	}
 }
 

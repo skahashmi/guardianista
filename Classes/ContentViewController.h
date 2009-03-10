@@ -10,13 +10,20 @@
 #import "GuardianContent.h"
 
 @interface ContentViewController : UIViewController {
-	IBOutlet UIWebView *webView;
+	// IBOutlet UIWebView *webView;
+	IBOutlet UILabel *headline;
+	IBOutlet UILabel *byline;
+	IBOutlet UILabel *body;
+	IBOutlet UIScrollView *scrollView;
 	GuardianContent *content;
-	NSString *url;
 }
 
 - (void)tagButtonWasPressed:(id)sender;
 
 @property (nonatomic,retain) GuardianContent *content;
+@property (nonatomic,retain) UILabel *headline;
+@property (nonatomic,retain) UILabel *byline;
+@property (nonatomic,retain) UILabel *body;
+@property (nonatomic,retain) UIScrollView *scrollView;
 
 @end
